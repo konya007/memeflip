@@ -1,1 +1,1 @@
-﻿Can play on: https://konnn04.github.io/memeflip/
+﻿Can play on: https://konya007.github.io/memeflip/
