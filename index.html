@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mêm Flip</title>
+    <link rel="shortcut icon" href="./asset/emojis/png (13).png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./asset/css/notification.css">
+    <!-- css -->
+    <link rel="stylesheet" href="./asset/css/main.css">
+</head>
+<body>
+    <div id="match-found">
+        <div class="mid">
+            <h1>LÊN LUÔN</h1>            
+            <div class="vs">
+                <div class="img1">
+                    <img src="./asset/emojis/gif (0).gif" alt="" srcset="">
+                </div>
+                <hr>
+                <h2>V.S</h2>
+                <div class="img2">
+                    <img src="./asset/emojis/gif (3).gif" alt="" srcset="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <span id="logo">
+        Konnn_v1.1.3
+    </span>
+    <div id="musicBtn">
+        <i class="fa-solid fa-volume-high"></i>
+    </div>
+    <div id="loading">
+        <h1>MÊM FLIP ONLINE</h1>
+        <div class="loading-box">
+            <span>Đang tải tài nguyên...</span>
+            <span class="i">0%</span>
+            <div class="progress-bar">
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <section id="lobby">
+        <canvas id="myCanvas"></canvas>
+        <h1>MÊM FLIP ONLINE</h1>
+        <ul class="list-menu">
+            <li>
+                <div id="matchPlay" class="btn0">
+                    Tìm trận nhanh
+                </div>
+            </li>
+            <li>
+                <div id="roomPlay" class="btn0">
+                    Phòng chơi
+                </div>
+            </li>
+            <li>
+                <div id="singlePlayPrepare" class="btn0">
+                    Chơi đơn
+                </div>
+            </li>
+            <li>
+                <div id="setAvt" class="btn0">
+                    Chọn Avt
+                </div>
+            </li>
+        </ul>
+        <div class="overplay setAvtBox">
+            <h2>
+                Chọn avt của bạn:
+            </h2>
+            <div class="listAvt">
+                <!--  -->
+            </div>
+            <div id="closeSetAvt">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+        </div>
+        <div class="overplay setRoom">
+            <h2>
+                Tạo phòng:
+            </h2>
+            <div class="form">
+                <label for="mode_room">Chế độ: </label>
+                <select name="mode" id="mode_room">
+                    <option value="false">
+                        Không công khai
+                    </option>
+                    <option value="true">
+                        Công khai
+                    </option>
+                </select>
+                <br>
+                <label for="size_room">Kích thước: </label>
+                <select name="size" id="size_room">
+                    
+                </select>
+                <br>
+                <button id="switchRoom" type="button">Mở phòng</button>
+                <h6 id="id_host">Mã phòng: <span>-</span></h6>
+                <br>
+                
+                <hr>
+                <div style="display: flex;align-items: center;gap: 10px;">
+                    <label for="id_join_room">Tham gia: </label>
+                    <input type="text" id="id_join_room">
+                    <button id="join_room" type="button">OK</button>
+                </div>
+                <div id="closeSetRoom">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div>
+            </div>
+        </div>
+        <div class="overplay setMatrix">
+            Bố cục ma trận: 
+            <div class="flex">
+                <button id="reduce">-</button>
+                <div id="matrixSingle">
+                    2
+                </div>
+                <button id="increase">+</button>
+            </div>
+            <div id="singlePlay" class="btn0">
+                Chơi ngay!
+            </div>
+            <div id="closeOverplay">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+        </div>
+        <div class="overplay matchingBox">
+            Đang tìm trận đấu:
+            <span>0</span>
+            <div id="cancelMatching">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+        </div>
+    </section>
+    <main>
+        <section class="left-side">
+            <div class="avt">
+                <img src="" alt="">
+            </div>
+            <div class="scoreBoard">
+                Điểm: <span>0</span>
+            </div>
+            <div class="timeBarLeft">
+                <div></div>
+            </div>
+            <div class="timeRemain">
+                Thời gian: <span>0</span>
+            </div>
+            <div class="buff">
+                <!-- <div>
+                    <img src="./asset/emojis/x2.png">
+                    <span>10</span>
+                </div> -->
+            </div>
+        </section>
+        <section class="mid-side">
+            <div id="gameplay">
+                <!--  -->
+            </div>
+            <div id="noitce">
+                Oke mày giỏi!!!
+            </div>
+        </section>
+        <section class="right-side">
+            <div class="avt_op">
+                <img src="" alt="">
+            </div>
+            <div class="scoreBoard">
+                Điểm: <span>0</span>
+            </div>
+            <div class="buff">
+                
+            </div>
+        </section>
+    </main>
+    <script src="./asset/js/notification.js"></script>
+    <script src="./asset/js/canvas.js"></script>
+    <script src="./asset/js/main.js"></script>
+</body>
+</html>

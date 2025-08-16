@@ -1,0 +1,609 @@
+*{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: aliceblue;
+    user-select: none;
+}
+
+body{
+    background-color: #131313;
+    position: relative;
+    height: 100vh;
+    user-select: none;
+}
+
+#logo{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 99;
+}
+
+#musicBtn{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 6;
+}
+
+#closeOverplay{
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+/* room */
+
+.setRoom .form{
+    width: 90%;
+    max-width: 400px;
+}
+
+.form label{
+    font-size: 1.2rem;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.form #switchRoom{
+    display: block;
+    font-size: 1.2rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    aspect-ratio: unset;
+}
+
+.form select{
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+
+.form option{
+    color: #131313;
+}
+
+.form #id_join_room {
+    background-color: transparent;
+    border: 2px solid #fff;
+    font-size: 1.2rem;    
+}
+
+.form #id_host{
+    font-weight: 400;
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+.form #id_host span{
+    font-size: 1.4rem;
+}
+
+.form #closeSetRoom {
+    display: flex;
+    justify-content: center;
+}
+
+.form #closeSetRoom i {
+    margin: auto;
+}
+
+
+/* sence1 */
+#loading{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#loading > .loading-box{
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    right:1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2;
+    gap: 10px;
+}
+
+.loading-box span:nth-child(2) {
+    text-align: right;
+}
+
+.loading-box .progress-bar{
+    grid-column: 1/span 2;
+    padding: 2px;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+}
+
+.loading-box .progress-bar div{
+    transition: all .3s linear;
+    height: 10px;
+    background-color: #fff;
+    width: 0;
+}
+
+#lobby{
+    display: none;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+#lobby canvas {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    animation: flash .46s .3s infinite;
+}
+
+@keyframes flash {
+    0%{
+        filter: brightness(.5);
+        scale: 1;
+    }
+    5%{
+        scale: 1.05;
+        filter: brightness(1);
+    }
+    85%{
+        scale: 1;
+        filter: brightness(.5);
+    }
+    100%{
+        scale: 1;
+        filter: brightness(.5);
+    }
+}
+
+#lobby .overplay{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: brightness(.1);
+    z-index: 5;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.overplay .flex{
+    display: flex;
+    gap: 1rem;
+    margin: .5rem;
+    font-size: 1.5rem;
+}
+
+.overplay button{
+    border: 2px solid #fff;
+    aspect-ratio: 1;
+    height: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.overplay button:hover{
+    background-color: #fff;
+    color: #131313;
+}
+
+#lobby h1{
+    text-align: center;
+}
+
+#lobby .list-menu{
+    list-style: none;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0;
+}
+
+.btn0{
+    text-align: center;
+    border: 2px solid #fff;
+    padding: .5rem;
+    width: 200px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.btn0:hover{
+    background-color: #fff;
+    color: #131313;
+}
+
+
+#lobby .matchingBox{
+    font-size: 1.4rem;
+}
+
+#lobby .matchingBox span{
+    display: block;
+    width: fit-content;
+    font-weight: 700;
+    margin: 1rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+#lobby i{
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+#lobby .listAvt{
+    width: 80%;
+    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    height: 60vh;
+    border: 2px solid #fff;
+    padding: 10px;
+    gap: 10px;
+    margin: 1rem;
+    overflow-y: auto;
+}
+
+#lobby .listAvt div{
+    box-sizing: border-box;
+    width: 23%;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+#lobby .listAvt div img{
+    width: 100%;height: 100%;
+}
+/*  */
+main{
+    display: none;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: .3fr 1fr .3fr;
+}
+
+main .left-side,
+main .right-side {
+    padding: 1rem;
+}
+
+main .left-side .avt,
+main .right-side .avt_op{
+    width: 100%;
+    overflow: hidden;
+}
+
+main .left-side .avt img ,
+main .right-side .avt_op img{
+    width: 100%;
+    height: 100%;
+}
+
+main .left-side .timeBarLeft{
+    width: 100%;
+    padding: 2px;
+    border: 2px solid #fff;
+}
+
+main .left-side .timeBarLeft>div {
+    width: 100%;
+    height: 8px;
+    background-color: #fff;
+    transition: all 1s linear;
+}
+
+
+main .mid-side{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+main .mid-side #noitce{
+    display: none;
+    position: absolute;
+    font-size: 2rem;
+    text-shadow: 2px 2px 2px green;
+    text-align: center;
+}
+
+main .mid-side #noitce h2{
+    font-size: 1.3rem;
+    font-style: italic;
+    margin: 0;
+}
+
+main .mid-side #noitce h2{
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+
+main .mid-side #noitce h3{
+    font-size: 1.2rem;
+    margin: 0;
+    text-align: left;
+}
+
+main .mid-side #noitce h4{
+    margin: 10px;
+}
+
+main .mid-side #noitce h3 span{
+    font-size: 1.8rem;
+}
+
+main .mid-side #noitce h6 {
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 400;
+}
+
+main #gameplay{
+    margin: auto 1rem;
+    aspect-ratio: 1;
+    width: 100%;
+    max-width: 85vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr ;
+    gap: 2px;
+}
+
+main .scoreBoard{
+    font-size: 1.2rem;
+}
+
+main .scoreBoard span{
+    font-size: 2rem;
+}
+
+main .timeRemain{
+    font-size: 1.2rem;
+}
+
+main .timeRemain span{
+    font-size: 2rem;
+}
+
+main .buff{
+    display: inline-block;
+    height: 50px;
+}
+
+main .buff div{
+    position: relative;
+    height: 100%;
+}
+
+main .buff div img{
+    height: 100%
+}
+main .buff div span {
+    right: 0;
+    bottom: -10px;
+}
+
+
+#gameplay .block{
+    opacity: 0;
+    transition: all .3s;
+    cursor: pointer;
+    position: relative;
+    color: #131313;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameplay .block>div{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+#gameplay .block>div>img{
+    width: 100%;  
+    height: 100%;  
+}
+
+#gameplay .block.active{
+    background-color: rgb(245, 131, 0);
+}
+
+#gameplay .block.correct{
+    background-color: rgb(4, 245, 0);
+}
+
+#gameplay .block.wrong{
+    background-color: rgb(245, 0, 0);
+}
+
+@media screen and (max-width:600px) {
+    main{
+        display: none;
+        width: 100%;
+        height: 100%;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 20vh 1fr;
+    }
+    .mid-side{
+        grid-row: 2;
+        grid-column: 1/span 2;
+    }
+    main .left-side .avt,
+    main .right-side .avt_op{
+        height: 80%;
+        width: fit-content;
+    }
+}
+
+#match-found{
+    position: fixed;
+    z-index: 999;
+    backdrop-filter: brightness(.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+#match-found .mid{
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+#match-found .mid h1{
+    font-size: 3rem;
+}
+
+#match-found .mid .vs{
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+
+#match-found .mid .vs .img1,
+#match-found .mid .vs .img2{
+    width: 180px;
+    aspect-ratio: 1;
+    position: absolute;
+    z-index: 1;
+}
+
+#match-found .mid .vs img{
+    width: 100%;
+}
+
+#match-found .mid .vs hr{
+    transform: rotate(-75deg) translate(-50px,0);
+    width: 200px;
+    border: 1px solid #fff;
+    border-color: #651818;
+}
+
+#match-found .mid .vs h2{
+    font-size: 3rem;
+    font-weight: 400;
+    font-style: italic;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    text-shadow: 3px 3px 6px #ff1b1b;
+    transform: translateY(-30px);
+}
+
+
+
+#match-found .mid .vs .img1{
+    top: -20px;
+    left: 10px;
+}
+
+
+
+#match-found .mid .vs .img2{
+    top: 20px;
+    right: 10px;
+}
+
+#match-found.found{
+    display: flex;
+}
+
+#match-found.found .mid h1{
+    animation: move 2.5s linear forwards;
+}
+
+#match-found.found .mid .vs .img1{
+    animation: aniimg1 3s linear forwards;
+}
+
+#match-found.found .mid .vs .img2{
+    animation: aniimg2 3s linear forwards;
+}
+
+@keyframes move{
+    0%{
+        transform: translateX(80vw);
+    }
+    10%{
+        transform: translateX(50px);
+    }
+    90%{
+        transform: translateX(-50px);
+    }
+    100%{
+        transform: translateX(-80vh);
+    }
+}
+
+@keyframes aniimg1{
+    0%{
+        transform: translateX(-60vh) translateY(-60vw);
+        scale: 1;
+    }
+    10%{
+        transform: translateX(0) translateY(0);
+        scale: 1;
+    }
+    85%{
+        scale: 2;
+    }
+    99%{
+        scale: 8;
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes aniimg2{
+    0%{
+        transform: translateX(60vh) translateY(-60vw);
+        scale: 1;
+    }
+    10%{
+        transform: translateX(0) translateY(0);
+        scale: 1;
+    }
+    85%{
+        scale: 2;
+    }
+    99%{
+        scale: 8;
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
